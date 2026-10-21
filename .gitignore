@@ -1,0 +1,12 @@
+# Build outputs
+*.o
+*.obj
+*.exe
+*.out
+*.ilk
+*.pdb
+contact_book
+
+# IDE files
+.vs/
+.vscode/
