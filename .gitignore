@@ -10,3 +10,6 @@ contact_book
 # IDE files
 .vs/
 .vscode/
+
+# Runtime temp file used while deleting a contact
+contacts_temp.txt

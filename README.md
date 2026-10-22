@@ -9,6 +9,7 @@ persist between runs.
 - Add a contact (name + phone number)
 - View all saved contacts
 - Search for a contact by exact name
+- Delete a contact by exact name
 - Persistent storage in `contacts.txt` (created automatically when you add
   your first contact)
 
@@ -32,7 +33,8 @@ Then use the on-screen menu:
 1. Add Contact
 2. View all Contacts
 3. Search Contact by Name
-4. Exit
+4. Delete Contact
+5. Exit
 ```
 
 ## Sample output (trimmed from an actual run)
@@ -48,7 +50,7 @@ Contact found: Test Person - 5551234567
 
 ```
 main.c       Menu and program entry point
-contact.c    Add, view, and search logic
+contact.c    Add, view, search, and delete logic
 contact.h    Contact struct and function declarations
 contacts.txt Contact data (name,phone per line) — ships with the sample
              contacts from the original repo; replace with your own
@@ -57,5 +59,6 @@ contacts.txt Contact data (name,phone per line) — ships with the sample
 ## Notes
 
 - This project was extracted from a C projects collection repo; the source
-  code is unchanged (see CHANGES.md).
+  code was unchanged at extraction. A delete feature was added later
+  (see CHANGES.md).
 - Search matches the full name exactly (case-sensitive).

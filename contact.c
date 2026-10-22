@@ -69,3 +69,46 @@ void searchContact(const char* filename, const char* targetName) {
 
     fclose(fp);
 }
+
+void deleteContact(const char* filename, const char* targetName) {
+    FILE* fp = fopen(filename, "r");
+    if (!fp) {
+        printf("No Contacts Found!\n");
+        return;
+    }
+
+    FILE* temp = fopen("contacts_temp.txt", "w");
+    if (!temp) {
+        printf("Cannot open the file!\n");
+        fclose(fp);
+        return;
+    }
+
+    char line[100];
+    int found = 0;
+
+    while (fgets(line, sizeof(line), fp)) {
+        char copy[100];
+        strcpy(copy, line);
+        char* name = strtok(copy, ",");
+
+        if (name && strcmp(name, targetName) == 0) {
+            found = 1;
+            continue;  // skip this line so it is not kept
+        }
+        fprintf(temp, "%s", line);
+    }
+
+    fclose(fp);
+    fclose(temp);
+
+    if (!found) {
+        remove("contacts_temp.txt");
+        printf("No Contact Found!\n");
+        return;
+    }
+
+    remove(filename);
+    rename("contacts_temp.txt", filename);
+    printf("Contact Deleted\n");
+}

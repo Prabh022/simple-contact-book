@@ -10,4 +10,5 @@ struct Contact {
 void addContact(const char *filename);
 void viewContact(const char *filename);
 void searchContact(const char *filename, const char *targetName);
+void deleteContact(const char *filename, const char *targetName);
 #endif // !CONTACT_BOOK_H

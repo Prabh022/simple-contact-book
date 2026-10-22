@@ -13,7 +13,8 @@ int main() {
 		printf("1. Add Contact\n");
 		printf("2. View all Contacts\n");
 		printf("3. Search Contact by Name\n");
-		printf("4. Exit\n");
+		printf("4. Delete Contact\n");
+		printf("5. Exit\n");
 		printf("Enter choice: ");
 		scanf("%d", &choice);
 		
@@ -33,7 +34,13 @@ int main() {
 			searchContact(filename, searchName);
 			break;
 
-		case 4: 
+		case 4:
+			printf("Enter the name to Delete: ");
+			scanf(" %[^\n]", searchName);
+			deleteContact(filename, searchName);
+			break;
+
+		case 5:
 			printf("Exiting... \n");
 			exit(0);
 		default:
