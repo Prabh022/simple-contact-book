@@ -8,7 +8,8 @@ persist between runs.
 
 - Add a contact (name + phone number)
 - View all saved contacts
-- Search for a contact by exact name
+- Search for contacts by name (case-insensitive partial match — searching
+  "ali" finds both Alice and Alison)
 - Delete a contact by exact name
 - Persistent storage in `contacts.txt` (created automatically when you add
   your first contact)
@@ -61,4 +62,5 @@ contacts.txt Contact data (name,phone per line) — ships with the sample
 - This project was extracted from a C projects collection repo; the source
   code was unchanged at extraction. A delete feature was added later
   (see CHANGES.md).
-- Search matches the full name exactly (case-sensitive).
+- Search now matches a case-insensitive substring of the name and lists
+  every matching contact, instead of requiring the full name exactly.

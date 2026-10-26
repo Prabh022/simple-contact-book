@@ -43,12 +43,24 @@ void viewContact(const char* filename) {
     fclose(fp);  // ✅ moved out of loop
 }
 
+static void toLowerStr(const char* src, char* dst, size_t dstSize) {
+    size_t i;
+    for (i = 0; src[i] != '\0' && i + 1 < dstSize; i++) {
+        char c = src[i];
+        dst[i] = (c >= 'A' && c <= 'Z') ? (char)(c - 'A' + 'a') : c;
+    }
+    dst[i] = '\0';
+}
+
 void searchContact(const char* filename, const char* targetName) {
     FILE* fp = fopen(filename, "r");
     if (!fp) {
         printf("No Contacts Found!\n");
         return;
     }
+
+    char targetLower[100];
+    toLowerStr(targetName, targetLower, sizeof(targetLower));
 
     char line[100];
     int found = 0;
@@ -57,10 +69,13 @@ void searchContact(const char* filename, const char* targetName) {
         char* name = strtok(line, ",");
         char* phone = strtok(NULL, "\n");
 
-        if (name && phone && strcmp(name, targetName) == 0) {
-            printf("Contact found: %s - %s\n", name, phone);
-            found = 1;
-            break;
+        if (name && phone) {
+            char nameLower[100];
+            toLowerStr(name, nameLower, sizeof(nameLower));
+            if (strstr(nameLower, targetLower) != NULL) {
+                printf("Contact found: %s - %s\n", name, phone);
+                found = 1;
+            }
         }
     }
 
