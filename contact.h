@@ -11,4 +11,5 @@ void addContact(const char *filename);
 void viewContact(const char *filename);
 void searchContact(const char *filename, const char *targetName);
 void deleteContact(const char *filename, const char *targetName);
+void editContact(const char *filename, const char *targetName, const char *newPhone);
 #endif // !CONTACT_BOOK_H

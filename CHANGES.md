@@ -1,5 +1,18 @@
 # Changes made during standalone extraction (October 2026)
 
+## Update — October 29, 2026
+
+**Feature: edit a contact's phone number.** The menu had add, view,
+search, and delete but no way to correct a saved phone number. Added
+`editContact()` to `contact.c` (menu option 5; Exit moved to 6): it
+rewrites `contacts.txt` through a temporary file, replacing only the
+phone number on the line whose name matches exactly; when the name is
+absent it reports "No Contact Found!", removes the temp file, and
+leaves the data file untouched. Verified with a scripted run on seeded
+data (Alice / Bob / Carol): editing Bob changed only Bob's number,
+editing a nonexistent name changed nothing, and no temp file was left
+behind. Builds clean with `gcc -std=c11 -Wall -Wextra`.
+
 Extracted from the `c-projects-portfolio` collection repo. Only the project's
 real source files and its sample `contacts.txt` were carried over — Visual
 Studio files (`.sln`, `.vcxproj`, Debug folders, `.ilk`, `.obj.enc`) were

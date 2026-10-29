@@ -8,13 +8,15 @@ int main() {
 	int choice;
 	char filename[] = "contacts.txt";
 	char searchName[50];
+	char newPhone[15];
 	while (1) {
 		printf("\n---Contact Book---\n");
 		printf("1. Add Contact\n");
 		printf("2. View all Contacts\n");
 		printf("3. Search Contact by Name\n");
 		printf("4. Delete Contact\n");
-		printf("5. Exit\n");
+		printf("5. Edit Contact\n");
+		printf("6. Exit\n");
 		printf("Enter choice: ");
 		scanf("%d", &choice);
 		
@@ -41,6 +43,14 @@ int main() {
 			break;
 
 		case 5:
+			printf("Enter the name to Edit: ");
+			scanf(" %[^\n]", searchName);
+			printf("Enter the new phone: ");
+			scanf(" %14[^\n]", newPhone);
+			editContact(filename, searchName, newPhone);
+			break;
+
+		case 6:
 			printf("Exiting... \n");
 			exit(0);
 		default:

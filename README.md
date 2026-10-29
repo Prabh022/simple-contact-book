@@ -11,6 +11,7 @@ persist between runs.
 - Search for contacts by name (case-insensitive partial match — searching
   "ali" finds both Alice and Alison)
 - Delete a contact by exact name
+- Edit a contact's phone number by exact name (other contacts untouched)
 - Persistent storage in `contacts.txt` (created automatically when you add
   your first contact)
 
@@ -35,7 +36,8 @@ Then use the on-screen menu:
 2. View all Contacts
 3. Search Contact by Name
 4. Delete Contact
-5. Exit
+5. Edit Contact
+6. Exit
 ```
 
 ## Sample output (trimmed from an actual run)
@@ -51,7 +53,7 @@ Contact found: Test Person - 5551234567
 
 ```
 main.c       Menu and program entry point
-contact.c    Add, view, search, and delete logic
+contact.c    Add, view, search, delete, and edit logic
 contact.h    Contact struct and function declarations
 contacts.txt Contact data (name,phone per line) — ships with the sample
              contacts from the original repo; replace with your own
